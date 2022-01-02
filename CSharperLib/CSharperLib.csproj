@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,14 @@
     <Description>Essential C# Utils and Extensions.</Description>
     <RepositoryUrl>https://github.com/CSharperLib/CSharperLib</RepositoryUrl>
     <PackageTags>C#; .NET, Utils, Extensions</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/CSharperLib</PackageProjectUrl>
+    <Copyright>CSharperLib</Copyright>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
 
 </Project>
