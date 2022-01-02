@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>Kaaregaard</Authors>
+    <Description>Essential C# Utils and Extensions.</Description>
+    <RepositoryUrl>https://github.com/CSharperLib/CSharperLib</RepositoryUrl>
+    <PackageTags>C#; .NET, Utils, Extensions</PackageTags>
   </PropertyGroup>
 
 </Project>
