@@ -12,6 +12,7 @@
     <PackageProjectUrl>https://github.com/CSharperLib</PackageProjectUrl>
     <Copyright>CSharperLib</Copyright>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
