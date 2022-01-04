@@ -45,4 +45,201 @@ public class StringExtensions
         // Assert
         Assert.Equal(expected, result);
     }
+
+
+    // --- Trim ---
+
+    [Theory]
+    [InlineData("", "xyz", "")]
+    [InlineData(" ", "xyz", " ")]
+    [InlineData("xyz", "xyz", "")]
+    [InlineData(" xyz", "xyz", " ")]
+    [InlineData("xyz ", "xyz", " ")]
+    [InlineData(" xyz ", "xyz", " xyz ")]
+    [InlineData("xyzABC", "xyz", "ABC")]
+    [InlineData("ABCxyz", "xyz", "ABC")]
+    [InlineData("xyzABCxyz", "xyz", "ABC")]
+    [InlineData("xyz ABC", "xyz", " ABC")]
+    [InlineData("ABC xyz", "xyz", "ABC ")]
+    [InlineData("xyz ABC xyz", "xyz", " ABC ")]
+    [InlineData("XYZ ABC XYZ", "xyz", "XYZ ABC XYZ")]
+    [InlineData("xyzxyz ABC xyzxyz", "xyz", " ABC ")]
+    [InlineData("xyzXYZ ABC XYZxyz", "xyz", "XYZ ABC XYZ")]
+    [InlineData("XYZxyz ABC xyzXYZ", "xyz", "XYZxyz ABC xyzXYZ")]
+    [InlineData("XYZXYZ ABC XYZXYZ", "xyz", "XYZXYZ ABC XYZXYZ")]
+    public void Trim(string value, string trimString, string expected)
+    {
+        // Act
+        string result = value.Trim(trimString);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData("", "xyz", "")]
+    [InlineData(" ", "xyz", " ")]
+    [InlineData("xyz", "xyz", "")]
+    [InlineData(" xyz", "xyz", " ")]
+    [InlineData("xyz ", "xyz", " ")]
+    [InlineData(" xyz ", "xyz", " xyz ")]
+    [InlineData("xyzABC", "xyz", "ABC")]
+    [InlineData("ABCxyz", "xyz", "ABC")]
+    [InlineData("xyzABCxyz", "xyz", "ABC")]
+    [InlineData("xyz ABC", "xyz", " ABC")]
+    [InlineData("ABC xyz", "xyz", "ABC ")]
+    [InlineData("xyz ABC xyz", "xyz", " ABC ")]
+    [InlineData("XYZ ABC XYZ", "xyz", " ABC ")]
+    [InlineData("xyzxyz ABC xyzxyz", "xyz", " ABC ")]
+    [InlineData("xyzXYZ ABC XYZxyz", "xyz", " ABC ")]
+    [InlineData("XYZxyz ABC xyzXYZ", "xyz", " ABC ")]
+    [InlineData("XYZXYZ ABC XYZXYZ", "xyz", " ABC ")]
+    public void Trim_IgnoreCase(string value, string trimString, string expected)
+    {
+        // Act
+        string result = value.Trim(trimString, ignoreCase: true);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+
+    // --- TrimEnd ---
+
+    [Theory]
+    [InlineData("", "xyz", "")]
+    [InlineData(" ", "xyz", " ")]
+    [InlineData("xyz", "xyz", "")]
+    [InlineData(" xyz", "xyz", " ")]
+    [InlineData("xyz ", "xyz", "xyz ")]
+    [InlineData(" xyz ", "xyz", " xyz ")]
+    [InlineData("xyzABC", "xyz", "xyzABC")]
+    [InlineData("ABCxyz", "xyz", "ABC")]
+    [InlineData("xyzABCxyz", "xyz", "xyzABC")]
+    [InlineData("xyz ABC", "xyz", "xyz ABC")]
+    [InlineData("ABC xyz", "xyz", "ABC ")]
+    [InlineData("xyz ABC xyz", "xyz", "xyz ABC ")]
+    [InlineData("XYZ ABC XYZ", "xyz", "XYZ ABC XYZ")]
+    [InlineData("xyzxyz ABC xyzxyz", "xyz", "xyzxyz ABC ")]
+    [InlineData("xyzXYZ ABC XYZxyz", "xyz", "xyzXYZ ABC XYZ")]
+    [InlineData("XYZxyz ABC xyzXYZ", "xyz", "XYZxyz ABC xyzXYZ")]
+    [InlineData("XYZXYZ ABC XYZXYZ", "xyz", "XYZXYZ ABC XYZXYZ")]
+    public void TrimEnd(string value, string trimString, string expected)
+    {
+        // Act
+        string result = value.TrimEnd(trimString);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData("", "xyz", "")]
+    [InlineData(" ", "xyz", " ")]
+    [InlineData("xyz", "xyz", "")]
+    [InlineData(" xyz", "xyz", " ")]
+    [InlineData("xyz ", "xyz", "xyz ")]
+    [InlineData(" xyz ", "xyz", " xyz ")]
+    [InlineData("xyzABC", "xyz", "xyzABC")]
+    [InlineData("ABCxyz", "xyz", "ABC")]
+    [InlineData("xyzABCxyz", "xyz", "xyzABC")]
+    [InlineData("xyz ABC", "xyz", "xyz ABC")]
+    [InlineData("ABC xyz", "xyz", "ABC ")]
+    [InlineData("xyz ABC xyz", "xyz", "xyz ABC ")]
+    [InlineData("XYZ ABC XYZ", "xyz", "XYZ ABC ")]
+    [InlineData("xyzxyz ABC xyzxyz", "xyz", "xyzxyz ABC ")]
+    [InlineData("xyzXYZ ABC XYZxyz", "xyz", "xyzXYZ ABC ")]
+    [InlineData("XYZxyz ABC xyzXYZ", "xyz", "XYZxyz ABC ")]
+    [InlineData("XYZXYZ ABC XYZXYZ", "xyz", "XYZXYZ ABC ")]
+    public void TrimEnd_IgnoreCase(string value, string trimString, string expected)
+    {
+        // Act
+        string result = value.TrimEnd(trimString, ignoreCase: true);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+
+    // --- TrimStart ---
+
+    [Theory]
+    [InlineData("", "xyz", "")]
+    [InlineData(" ", "xyz", " ")]
+    [InlineData("xyz", "xyz", "")]
+    [InlineData(" xyz", "xyz", " xyz")]
+    [InlineData("xyz ", "xyz", " ")]
+    [InlineData(" xyz ", "xyz", " xyz ")]
+    [InlineData("xyzABC", "xyz", "ABC")]
+    [InlineData("ABCxyz", "xyz", "ABCxyz")]
+    [InlineData("xyzABCxyz", "xyz", "ABCxyz")]
+    [InlineData("xyz ABC", "xyz", " ABC")]
+    [InlineData("ABC xyz", "xyz", "ABC xyz")]
+    [InlineData("xyz ABC xyz", "xyz", " ABC xyz")]
+    [InlineData("XYZ ABC XYZ", "xyz", "XYZ ABC XYZ")]
+    [InlineData("xyzxyz ABC xyzxyz", "xyz", " ABC xyzxyz")]
+    [InlineData("xyzXYZ ABC XYZxyz", "xyz", "XYZ ABC XYZxyz")]
+    [InlineData("XYZxyz ABC xyzXYZ", "xyz", "XYZxyz ABC xyzXYZ")]
+    [InlineData("XYZXYZ ABC XYZXYZ", "xyz", "XYZXYZ ABC XYZXYZ")]
+    public void TrimStart(string value, string trimString, string expected)
+    {
+        // Act
+        string result = value.TrimStart(trimString);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData("", "xyz", "")]
+    [InlineData(" ", "xyz", " ")]
+    [InlineData("xyz", "xyz", "")]
+    [InlineData(" xyz", "xyz", " xyz")]
+    [InlineData("xyz ", "xyz", " ")]
+    [InlineData(" xyz ", "xyz", " xyz ")]
+    [InlineData("xyzABC", "xyz", "ABC")]
+    [InlineData("ABCxyz", "xyz", "ABCxyz")]
+    [InlineData("xyzABCxyz", "xyz", "ABCxyz")]
+    [InlineData("xyz ABC", "xyz", " ABC")]
+    [InlineData("ABC xyz", "xyz", "ABC xyz")]
+    [InlineData("xyz ABC xyz", "xyz", " ABC xyz")]
+    [InlineData("XYZ ABC XYZ", "xyz", " ABC XYZ")]
+    [InlineData("xyzxyz ABC xyzxyz", "xyz", " ABC xyzxyz")]
+    [InlineData("xyzXYZ ABC XYZxyz", "xyz", " ABC XYZxyz")]
+    [InlineData("XYZxyz ABC xyzXYZ", "xyz", " ABC xyzXYZ")]
+    [InlineData("XYZXYZ ABC XYZXYZ", "xyz", " ABC XYZXYZ")]
+    public void TrimStart_IgnoreCase(string value, string trimString, string expected)
+    {
+        // Act
+        string result = value.TrimStart(trimString, ignoreCase: true);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+
+    // --- RemoveEmptyLines ---
+
+    [Theory]
+    [InlineData("", "")]
+    [InlineData(" ", "")]
+    [InlineData("ABC", "ABC")]
+    [InlineData("\t", "")]
+    [InlineData("\r", "")]
+    [InlineData("\n", "")]
+    [InlineData("\r\n", "")]
+    [InlineData("\r\n\r\n", "")]
+    [InlineData("\r\nABC\r\n", "ABC\r\n")]
+    [InlineData("ABC\r\n\r\n", "ABC\r\n")]
+    [InlineData("\r\nABC\r\n\r\n", "ABC\r\n")]
+    [InlineData("\r\n\r\nABC\r\n\r\n\r\n", "ABC\r\n")]
+    [InlineData("\r\n123\r\n\r\nABC\r\n\r\nXYZ\r\n\r\n", "123\r\nABC\r\nXYZ\r\n")]
+    public void RemoveEmptyLines(string value, string expected)
+    {
+        // Act
+        string result = value.RemoveEmptyLines();
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
 }
