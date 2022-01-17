@@ -1,4 +1,5 @@
-﻿
+﻿namespace CSharperLib.Extensions;
+
 /// <summary>
 /// IEnumerable Extensions
 /// </summary>

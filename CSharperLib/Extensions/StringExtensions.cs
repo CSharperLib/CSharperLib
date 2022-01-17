@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace CSharperLib.Extensions;
 
@@ -27,6 +28,53 @@ public static class StringExtensions
     public static bool IsNullOrWhiteSpace(this string? value)
     {
         return string.IsNullOrWhiteSpace(value);
+    }
+
+
+    /// <summary>
+    /// Indicates whether the specified string is equivalent to a number using the <see langword="NumberStyle.Integer"/> style.
+    /// (CSharperLib)
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns><see langword="true"/> if this <see langword="string"/> is equivalent to a number using the <see langword="NumberStyle.Integer"/> style; otherwise <see langword="false"/>.</returns>
+    public static bool IsInt(this string value)
+    {
+        return int.TryParse(value, out _);
+    }
+
+    /// <summary>
+    /// Converts the specified string to an <see langword="int"/>.
+    /// (CSharperLib)
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>An <see langword="int"/> equivalent to the number contained in the specified string using the <see langword="NumberStyle.Integer"/> style.</returns>
+    public static int ToInt(this string value)
+    {
+        return int.Parse(value);
+    }
+
+    /// <summary>
+    /// Indicates whether the specified string is equivalent to a number using the <see langword="NumberStyle.Number"/> style.
+    /// (CSharperLib)
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns><see langword="true"/> if this <see langword="string"/> is equivalent to a number using the <see langword="NumberStyle.Number"/> style; otherwise <see langword="false"/>.</returns>
+    /// <remarks>The current culture is used.</remarks>
+    public static bool IsIntNumber(this string value)
+    {
+        return int.TryParse(value, NumberStyles.Number, null, out _);
+    }
+
+    /// <summary>
+    /// Converts the specified string to an <see langword="int"/>.
+    /// (CSharperLib)
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>An <see langword="int"/> equivalent to the number contained in the specified string using the <see langword="NumberStyle.Number"/> style.</returns>
+    /// <remarks>The current culture is used.</remarks>
+    public static int ToIntNumber(this string value)
+    {
+        return int.Parse(value, NumberStyles.Number);
     }
 
 

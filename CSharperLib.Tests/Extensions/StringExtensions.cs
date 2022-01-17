@@ -1,10 +1,16 @@
-﻿using CSharperLib.Extensions;
-using Xunit;
+﻿using System.Globalization;
+using Xunit.Sdk;
 
 namespace CSharperLib.Tests.Extensions;
 
 public class StringExtensions
 {
+    public StringExtensions()
+    {
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-GB");
+    }
+
+
     // --- IsNullOrEmpty ---
 
     [Theory]
@@ -41,6 +47,71 @@ public class StringExtensions
     {
         // Act
         bool result = value.IsNullOrWhiteSpace();
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+
+    // --- IsInt ---
+
+    [Theory]
+    [InlineData("", false)]
+    [InlineData("0", true)]
+    [InlineData("123", true)]
+    public void IsInt(string value, bool expected)
+    {
+        // Act
+        bool isInt = value.IsInt();
+
+        // Assert
+        Assert.Equal(expected, isInt);
+    }
+
+
+    // --- ToInt ---
+
+    [Theory]
+    [InlineData("0", 0)]
+    [InlineData("123", 123)]
+    public void ToInt(string value, int expected)
+    {
+        // Act
+        int result = value.ToInt();
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+
+    // --- IsIntNumber ---
+
+    [Theory]
+    [InlineData("", false)]
+    [InlineData("0", true)]
+    [InlineData("123", true)]
+    [InlineData("123,456.", true)]
+    [InlineData("123.456,", false)]
+    public void IsIntNumber(string value, bool expected)
+    {
+        // Act
+        bool isIntNumber = value.IsIntNumber();
+
+        // Assert
+        Assert.Equal(expected, isIntNumber);
+    }
+
+
+    // --- ToIntNumber ---
+
+    [Theory]
+    [InlineData("0", 0)]
+    [InlineData("123", 123)]
+    [InlineData("123,456.", 123_456)]
+    public void ToIntNumber(string value, int expected)
+    {
+        // Act
+        int result = value.ToIntNumber();
 
         // Assert
         Assert.Equal(expected, result);

@@ -1,8 +1,4 @@
-﻿using System;
-using CSharperLib.Extensions;
-using Xunit;
-
-namespace CSharperLib.Tests.Extensions;
+﻿namespace CSharperLib.Tests.Extensions;
 
 public class DateTimeExtensions
 {
