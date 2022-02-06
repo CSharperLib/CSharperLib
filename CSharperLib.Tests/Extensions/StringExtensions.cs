@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Xunit.Sdk;
 
 namespace CSharperLib.Tests.Extensions;
 
@@ -286,6 +285,22 @@ public class StringExtensions
 
         // Assert
         Assert.Equal(expected, result);
+    }
+
+
+    // --- Join ---
+
+    [Fact]
+    public void Join_StringCollection_String()
+    {
+        // Arrange
+        var stringList = new List<string>() { "ABC", "XYZ" };
+
+        // Act
+        string result = stringList.Join(", ");
+
+        // Assert
+        Assert.Equal("ABC, XYZ", result);
     }
 
 

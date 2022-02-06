@@ -100,7 +100,7 @@ public static class StringExtensions
     /// </summary>
     /// <param name="value"></param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase"></param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore case during the comparison; otherwise, <see langword="false"/>.</param>
     /// <returns>
     /// The <see langword="string"/> that remains after all occurrences of the trimString <see langword="string"/> are removed from the start of the current <see langword="string"/>.
     /// If no strings can be trimmed from the current instance, the method returns the current instance unchanged.
@@ -116,7 +116,7 @@ public static class StringExtensions
     /// </summary>
     /// <param name="value"></param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase"></param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore case during the comparison; otherwise, <see langword="false"/>.</param>
     /// <returns>
     /// The <see langword="string"/> that remains after all occurrences of the trimString <see langword="string"/> are removed from the end of the current <see langword="string"/>.
     /// If no strings can be trimmed from the current instance, the method returns the current instance unchanged.
@@ -124,6 +124,22 @@ public static class StringExtensions
     public static string TrimEnd(this string value, string trimString, bool? ignoreCase = false)
     {
         return Regex.Replace(value, $@"({trimString})*$", "", (ignoreCase == true ? RegexOptions.IgnoreCase : RegexOptions.None) | RegexOptions.Compiled);
+    }
+
+
+    /// <summary>
+    /// Concatenates the current collection of strings, using the specified separator between each member.
+    /// (CSharperLib)
+    /// </summary>
+    /// <param name="values"></param>
+    /// <param name="separator">The string to use as a separator.</param>
+    /// <returns>
+    /// A string that consists of the strings in the current collection delimited by the separator string.
+    /// -or- an empty string ("") if the collection has zero elements.
+    /// </returns>
+    public static string Join(this IEnumerable<string?> values, string? separator)
+    {
+        return string.Join(separator, values);
     }
 
 
